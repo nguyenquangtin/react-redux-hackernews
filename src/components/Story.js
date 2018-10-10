@@ -3,7 +3,8 @@ import './Story.css';
 
 const Story = ({
     story,
-    columns
+    columns,
+    onArchive
   }) => {
     const {
       title,
@@ -11,6 +12,7 @@ const Story = ({
       author,
       num_comments,
       points,
+      objectID,
     } = story;
 
   return (
@@ -24,8 +26,23 @@ const Story = ({
         {num_comments} </span> <span style={{ width: columns.points.width }}>
         {points} </span> <span style={{ width: columns.archive.width }}>
       </span>
+
+      <span style={{ width: columns.archive.width }}>
+        <ButtonInline onClick={() => onArchive(objectID)}>
+          Archive
+        </ButtonInline>
+      </span>
     </div>
   );
 }
+
+const ButtonInline = ({
+  onClick,
+  type = 'button',
+  children
+}) =>
+  <button type={type} className="button-inline" onClick={onClick}>
+    {children}
+  </button>
 
 export default Story;
