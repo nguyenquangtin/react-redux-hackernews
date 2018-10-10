@@ -1,6 +1,4 @@
-import {
-  doAddStories
-} from './story';
+import { doAddStories } from './story';
 
 describe('story action', () => {
   it('adds stories', () => {

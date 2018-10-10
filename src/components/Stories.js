@@ -1,16 +1,12 @@
 import React from 'react';
-import {
-  connect
-} from 'react-redux';
-import {
-  doArchiveStory
-} from '../actions/archive';
+import { connect } from 'react-redux';
 import {
   getReadableStories,
   getFetchError,
 } from '../selectors/story';
-import Story from './Story';
 import './Stories.css';
+
+import Story from './Story';
 
 const COLUMNS = {
   title: {
@@ -30,13 +26,12 @@ const COLUMNS = {
     width: '10%',
   },
   archive: {
-
     width: '10%',
   },
 };
 
 const Stories = ({ stories, error }) =>
-  <div className = "stories" >
+  <div className="stories">
     <StoriesHeader columns={COLUMNS} />
 
     { error && <p className="error">Something went wrong ...</p> }
@@ -44,7 +39,7 @@ const Stories = ({ stories, error }) =>
     {(stories || []).map(story =>
       <Story
         key={story.objectID}
-        story = {story}
+        story={story}
         columns={COLUMNS}
       />
     )}
@@ -53,7 +48,10 @@ const Stories = ({ stories, error }) =>
 const StoriesHeader = ({ columns }) =>
   <div className="stories-header">
     {Object.keys(columns).map(key =>
-      <span key={key} style={{ width: columns[key].width }} >
+      <span
+        key={key}
+        style={{ width: columns[key].width }}
+      >
         {columns[key].label}
       </span>
     )}
@@ -64,4 +62,6 @@ const mapStateToProps = state => ({
   error: getFetchError(state),
 });
 
-export default connect(mapStateToProps)(Stories);
+export default connect(
+  mapStateToProps
+)(Stories);

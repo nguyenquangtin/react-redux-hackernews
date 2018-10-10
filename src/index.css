@@ -12,8 +12,7 @@ a:hover {
   text-decoration: underline;
 }
 
-ul,
-li {
+ul, li {
 
   list-style: none;
   padding: 0;

@@ -19,15 +19,14 @@ const applyFetchErrorStories = (state, action) => ({
 });
 
 function storyReducer(state = INITIAL_STATE, action) {
-  switch (action.type) {
+  switch(action.type) {
     case STORIES_ADD : {
       return applyAddStories(state, action);
     }
     case STORIES_FETCH_ERROR : {
       return applyFetchErrorStories(state, action);
     }
-    default:
-      return state;
+    default : return state;
   }
 }
 
