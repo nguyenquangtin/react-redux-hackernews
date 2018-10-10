@@ -4,7 +4,6 @@ import { fetchStories } from '../api/story';
 
 function* handleFetchStories(action) {
   const { query } = action;
-
   try {
     const result = yield call(fetchStories, query);
     yield put(doAddStories(result.hits));
